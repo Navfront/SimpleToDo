@@ -12,7 +12,7 @@ export interface TodosState{
 }
 
 const initialState: TodosState = {
-  todos: []
+  todos: [{ todoId: '0', todoTitle: 'New ToDo', isDone: false }]
 }
 
 export const todosSlice = createSlice({
