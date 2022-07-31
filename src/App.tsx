@@ -5,9 +5,9 @@ import Footer from './components/layers/footer/footer'
 function App () {
   return (
     <>
-      <Header/>
+      <Header />
       <Main />
-      <Footer/>
+      <Footer />
     </>
   )
 }

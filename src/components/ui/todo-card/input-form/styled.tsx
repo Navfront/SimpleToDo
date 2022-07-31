@@ -27,3 +27,15 @@ export const StyledLoginForm = styled.form`
 export const StyledInput = styled.input`
     ${input}
 `
+
+export const StyledLoginBtn = styled.button`
+    ${input}
+    margin: 0 10px;
+    
+    width: 100px;
+    @media (max-width:  768px){
+        width: 100%;
+        margin: 5px 0;
+    }
+    border: 1px solid lightgray
+`

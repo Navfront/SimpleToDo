@@ -1,25 +1,23 @@
-
 import { StyledContainer } from './../container/styled'
 import { StyledLogo, StyledFlexWrapper, StyledHeader } from './styled'
-import LoginForm from './../../ui/todo-card/login-form/login-form'
+import Auth from './../../ui/auth/auth'
 
 function Header () {
-  return <StyledHeader>
+  return (
+    <StyledHeader>
       <StyledContainer>
-          <StyledFlexWrapper>
-    <nav>
-        <StyledLogo href='#'>
-                      <img src='./logo.png' alt='Navfront.ru logo'></img>
-                      NAVFRONT.RU
-        </StyledLogo>
-
-    </nav>
-                <section >
-               < LoginForm></LoginForm>
-                </section>
-              </StyledFlexWrapper>
+        <StyledFlexWrapper>
+          <nav>
+            <StyledLogo href="#">
+              <img src="./logo.png" alt="Navfront.ru logo"></img>
+              NAVFRONT.RU
+            </StyledLogo>
+          </nav>
+          <Auth/>
+        </StyledFlexWrapper>
       </StyledContainer>
-  </StyledHeader>
+    </StyledHeader>
+  )
 }
 
 export default Header

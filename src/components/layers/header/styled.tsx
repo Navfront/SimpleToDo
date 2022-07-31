@@ -4,11 +4,13 @@ export const StyledHeader = styled.header`
     padding: 10px;
     margin-bottom: 10px;
     background-color: lightgrey;
+    
 `
 
 export const StyledFlexWrapper = styled.div`
     display: flex;
     justify-content: space-between;
+    align-items: center;
 `
 
 export const StyledLogo = styled.a`
