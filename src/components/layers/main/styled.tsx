@@ -5,10 +5,8 @@ export const StyledMain = styled.main`
     margin-bottom: 10px;
     padding: 10px;
 `
-export const StyledTodoList = styled.ul`
-    list-style: none;
-    padding: 0;
-    margin: 0;
+
+export const StyledMainSection = styled.section`
     display: grid;
     gap: 10px;
 `
@@ -16,4 +14,11 @@ export const StyledTodoList = styled.ul`
 export const StyledMainTitle = styled.h1`
     color: #333333;
     text-align: center;
+`
+
+export const StyledAddTodoBtn = styled.button`
+    background-color: transparent;
+    border: 1px solid #3a3a3a86;
+    border-radius: 2px;
+    justify-self: end;
 `

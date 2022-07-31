@@ -1,10 +1,10 @@
 
 import { createSlice } from '@reduxjs/toolkit'
-export interface AppState{
+export interface ApplicationState{
     isLoading: boolean
 }
 
-const initialState: AppState = {
+const initialState: ApplicationState = {
   isLoading: false
 }
 
