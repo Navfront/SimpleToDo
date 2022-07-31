@@ -48,9 +48,9 @@ function TodoCard ({ todoId, title, isDone = false, deleteCB = defCB, modifyCB =
       <StyledButtonsWrapper>
           <StyledButton onClick={deleteCB}>Delete</StyledButton>
       <StyledButton onClick={() => {
-        setIsModifying(true)
-      }}>Modify</StyledButton>
-          <StyledButton onClick={doneCB}>Done</StyledButton>
+        setIsModifying(!isModifying)
+      }}>{isModifying ? 'Cancel' : 'Modify'}</StyledButton>
+      <StyledButton onClick={doneCB}>{isDone ? 'Not Done' : 'Done'}</StyledButton>
       </StyledButtonsWrapper>
     </StyledTodoCard>
 }
