@@ -1,18 +1,19 @@
 
-import TodoCard from './../../ui/todo-card/todo-card'
-import { StyledContainer } from './../../layers/container/styled'
+import TodoCard from '../../ui/todo-card/todo-card'
+import { StyledContainer } from '../container/styled'
+import { StyledMain, TodoList } from './styled'
 function Main () {
-  return <main>
+  return <StyledMain>
       <StyledContainer>
       <section>
-          <ul>
+      <TodoList>
               <li>
                   <TodoCard todoId={'123'} title={'First Todo'} isDone={false}/>
               </li>
-        </ul>
+        </TodoList>
         </section>
         </StyledContainer>
-</main>
+</StyledMain>
 }
 
 export default Main

@@ -17,7 +17,7 @@ const defCB = () => {
 
 function TodoCard ({ todoId, title, isDone = false, deleteCB = defCB, modifyCB = defCB, doneCB = defCB }: TodoCardProps) {
   const [isLoading] = useState(false)
-  return <StyledTodoCard>
+  return <StyledTodoCard >
       {isLoading ? <img style={{ margin: '0 auto' }} src={loading} alt='loading image'></img> : <StyledTitle isDone={isDone}>{todoId + ' ' + title}</StyledTitle>}
 
       <StyledButtonsWrapper>

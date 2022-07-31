@@ -3,6 +3,16 @@ import styled from 'styled-components'
 
 export const StyledContainer = styled.div`
     margin: 0 auto;
-    width: 768px;
-    background-color: lightgrey;
+    max-width: 991px;
+    
+    @media (max-width: 991px) {
+        max-width: 768px;
+    }
+
+    @media (max-width: 768px) {
+        max-width: 360px;
+    }
+
+
+
 `

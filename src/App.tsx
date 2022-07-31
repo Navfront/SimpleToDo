@@ -1,29 +1,13 @@
-import { StyledContainer } from './components/layers/container/styled'
-import Main from './components/pages/main/main'
+import Main from './components/layers/main/main'
+import Header from './components/layers/header/header'
+import Footer from './components/layers/footer/footer'
 
 function App () {
-  const isLogined = false
   return (
     <>
-      <header>
-        <StyledContainer>
-        <nav>
-          <a>Logo</a>
-
-        </nav>
-        <section >
-          {isLogined
-            ? <h2>Hello UserName!</h2>
-            : <div>
-              <button type="button">Register</button>
-
-              <button type="button">Login</button>
-            </div>
-          }
-          </section>
-          </StyledContainer>
-      </header>
-<Main/>
+      <Header/>
+      <Main />
+      <Footer/>
     </>
   )
 }
