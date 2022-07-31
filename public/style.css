@@ -1,0 +1,23 @@
+body{
+    min-width: 360px;
+    background-color: rgb(232, 232, 232)
+}
+
+html, body, #root{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#root{
+    display: flex;
+    flex-direction: column;
+}
+
+main{
+    flex-grow: 1;
+
+}
+footer{
+    justify-self: end;
+}
