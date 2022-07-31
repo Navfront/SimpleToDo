@@ -1,16 +1,17 @@
 
 import TodoCard from '../../ui/todo-card/todo-card'
 import { StyledContainer } from '../container/styled'
-import { StyledMain, TodoList } from './styled'
+import { StyledMain, StyledMainTitle, StyledTodoList } from './styled'
 function Main () {
   return <StyledMain>
-      <StyledContainer>
-      <section>
-      <TodoList>
+        <StyledContainer>
+          <section>
+              <StyledMainTitle>{'<'} SIMPLE TODO LIST {'>'}</StyledMainTitle>
+      <StyledTodoList>
               <li>
                   <TodoCard todoId={'123'} title={'First Todo'} isDone={false}/>
               </li>
-        </TodoList>
+        </StyledTodoList>
         </section>
         </StyledContainer>
 </StyledMain>

@@ -13,6 +13,7 @@ export const StyledTodoCard = styled.div`
 `
 
 export const StyledTitle = styled.h2<TitleProps>`
+margin-left: 10px;
     text-decoration: ${(props) => !props.isDone ? 'none' : 'line-through'};
     color: #000000;
 `
