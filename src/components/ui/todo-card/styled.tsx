@@ -22,6 +22,7 @@ export const StyledButton = styled.button`
     background-color: transparent;
     border: 1px solid #3a3a3a86;
     border-radius: 2px;
+    cursor: pointer;
     width: 80px;
     &:not(:last-of-type){
         margin-bottom: 5px;

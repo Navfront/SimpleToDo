@@ -1,8 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { StyledAuthButton, StyledAuthIn, StyledAuthOut, StyledAuthSection, StyledUser } from './styled'
 import { useState } from 'react'
-import LoginForm from './../todo-card/input-form/input-form'
-import { LOGIN, REGISTER } from '../todo-card/input-form/input-form'
+import LoginForm, { LOGIN, REGISTER } from '../input-form/input-form'
 
 function Auth () {
   const [isAuth, setIsAuth] = useState(false) // store

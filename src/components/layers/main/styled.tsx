@@ -9,6 +9,7 @@ export const StyledMain = styled.main`
 export const StyledMainSection = styled.section`
     display: grid;
     gap: 10px;
+    
 `
 
 export const StyledMainTitle = styled.h1`
@@ -18,7 +19,9 @@ export const StyledMainTitle = styled.h1`
 
 export const StyledAddTodoBtn = styled.button`
     background-color: transparent;
-    border: 1px solid #3a3a3a86;
+    border:1.5px solid #3a3a3a86;
     border-radius: 2px;
     justify-self: end;
+    font-weight: 600;
+    cursor: pointer;
 `
