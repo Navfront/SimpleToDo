@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import appReducer from './slices/appSlice'
 import authReducer from './slices/authSlice'
 import todosReducer from './slices/todosSlice'
+import thunk from 'redux-thunk'
 
 export const store = configureStore({
   reducer: {
@@ -10,7 +11,7 @@ export const store = configureStore({
     todos: todosReducer
 
   },
-  middleware: [],
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk),
   enhancers: []
 })
 
