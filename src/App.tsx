@@ -1,25 +1,30 @@
-import React from 'react'
-import logo from './logo.svg'
-import './App.css'
+import { StyledContainer } from './components/layers/container/styled'
+import Main from './components/pages/main/main'
 
 function App () {
+  const isLogined = false
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <>
+      <header>
+        <StyledContainer>
+        <nav>
+          <a>Logo</a>
+
+        </nav>
+        <section >
+          {isLogined
+            ? <h2>Hello UserName!</h2>
+            : <div>
+              <button type="button">Register</button>
+
+              <button type="button">Login</button>
+            </div>
+          }
+          </section>
+          </StyledContainer>
       </header>
-    </div>
+<Main/>
+    </>
   )
 }
 
