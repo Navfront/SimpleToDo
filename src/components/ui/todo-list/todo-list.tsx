@@ -2,10 +2,21 @@ import { StyledTodoList } from './styled'
 import TodoCard from './../todo-card/todo-card'
 import loadingIcon from '../todo-card/loading.gif'
 import { useAppSelector } from '../../../redux/redux-hooks'
+import { useEffect } from 'react'
+import { useAppDispatch } from './../../../redux/redux-hooks'
+import { getTodos } from './../../../redux/slices/todosSlice'
 
 function TodoList () {
   const isLoading = useAppSelector((state) => state.app.isLoading)
   const todos = useAppSelector((state) => state.todos.todos)
+  const { isAuth } = useAppSelector(state => state.auth)
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    if (isAuth) {
+      dispatch(getTodos())
+    }
+  }, [isAuth])
 
   return isLoading
     ? (
