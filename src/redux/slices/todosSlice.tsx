@@ -23,10 +23,7 @@ export const todosSlice = createSlice({
       state.todos.push(action.payload)
     },
     removeTodo: (state, action: PayloadAction<Pick<Todo, 'todoId'>>) => {
-      const index = state.todos.findIndex(todo => todo.todoId === action.payload.todoId)
-      if (index >= 0) {
-        state.todos = [...state.todos.slice(0, index), ...state.todos.slice(index + 1)]
-      }
+      state.todos = state.todos.filter(todo => todo.todoId !== action.payload.todoId)
     },
     modifyTodo: (state, action: PayloadAction<Todo>) => {
       const index = state.todos.findIndex(todo => todo.todoId === action.payload.todoId)
