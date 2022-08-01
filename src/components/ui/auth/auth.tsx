@@ -2,18 +2,31 @@
 import { StyledAuthButton, StyledAuthIn, StyledAuthOut, StyledAuthSection, StyledUser } from './styled'
 import { useState } from 'react'
 import LoginForm, { LOGIN, REGISTER } from '../input-form/input-form'
+import { useAppSelector } from '../../../redux/redux-hooks'
+import { useAppDispatch } from './../../../redux/redux-hooks'
+import { changeAuthState } from '../../../redux/slices/authSlice'
 
 function Auth () {
-  const [isAuth, setIsAuth] = useState(false) // store
+  const { isAuth, userName } = useAppSelector(state => state.auth)
   const [isLoginFormShow, setIsLoginFormShow] = useState(false)
   const [isRegFormShow, setIsRegFormShow] = useState(false)
+  const dispatch = useAppDispatch()
+
+  const logoutHandler = () => {
+    dispatch(changeAuthState({
+      isAuth: false,
+      userName: '',
+      token: '',
+      authLoading: false
+    }))
+  }
 
   return (
 
         <StyledAuthSection>
             {isAuth
-              ? <StyledAuthIn><StyledUser>UserName<img src="./user.svg" alt="UserImage" width='30' height='30' /></StyledUser>
-              <StyledAuthButton type="button">Logout..</StyledAuthButton></StyledAuthIn>
+              ? <StyledAuthIn><StyledUser>{userName}<img src="./user.svg" alt="UserImage" width='30' height='30' /></StyledUser>
+              <StyledAuthButton type="button" onClick={() => { logoutHandler() }}>Logout..</StyledAuthButton></StyledAuthIn>
               : <StyledAuthOut>
                   {isRegFormShow ? <LoginForm submitType={REGISTER} /> : <StyledAuthButton type="button" onClick={() => { setIsRegFormShow(true); setIsLoginFormShow(false) }}>Registration</StyledAuthButton>}
                   {isLoginFormShow

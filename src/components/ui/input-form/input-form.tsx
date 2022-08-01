@@ -1,7 +1,7 @@
 
 import { StyledInput, StyledLoginBtn, StyledLoginForm } from './styled'
 import { useAppDispatch, useAppSelector } from './../../../redux/redux-hooks'
-import { postUserData } from '../../../redux/slices/authSlice'
+import { createUser, loginUser } from '../../../redux/slices/authSlice'
 
 type LoginFormProps = {
   submitType: 'Register' | 'Login'
@@ -19,13 +19,20 @@ function InputForm ({ submitType }: LoginFormProps) {
     const fields = new FormData(evt.target)
     const login = fields.get('login')!
     const password = fields.get('password')!
-    dispatch(postUserData({ login, password }))
+    switch (submitType) {
+      case LOGIN:
+        dispatch(loginUser({ login, password }))
+        break
+      case REGISTER:
+        dispatch(createUser({ login, password }))
+        break
+    }
   }
 
   return <StyledLoginForm onSubmit={submitHandler}>
       <StyledInput name='login' type='text' placeholder='Login'/>
     <StyledInput name='password' type='password' autoComplete='on' placeholder='Password' />
-    <StyledLoginBtn type="submit">{submitType} <img width='16' height='16' src='./loadingButton.gif' alt='loading' style={{ display: isAuthLoading ? '' : 'none' }}/></StyledLoginBtn>
+    <StyledLoginBtn type="submit">{submitType} <img width='16' height='16' src='./loadingButton.gif' alt='#' style={{ display: isAuthLoading ? '' : 'none' }}/></StyledLoginBtn>
     </StyledLoginForm>
 }
 
