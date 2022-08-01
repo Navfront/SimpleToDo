@@ -41,7 +41,7 @@ export default class LocalStorageApi {
       const result = current.filter((todo) => todo.todoId !== todoId)
       LocalStorageApi.setInLocalStorage(usernamePrefix, JSON.stringify(result))
     } else {
-      throw new Error('Can\'t add to local storage!')
+      throw new Error('Can\'t remove from local storage!')
     }
     return true
   }
@@ -53,7 +53,7 @@ export default class LocalStorageApi {
       const sliced = todos.slice(0, index).concat({ ...todo }, todos.slice(index + 1))
       LocalStorageApi.setInLocalStorage(usernamePrefix, JSON.stringify(sliced))
     } else {
-      throw new Error('Can\'t add to local storage!')
+      throw new Error('Can\'t update to local storage!')
     }
 
     return true
