@@ -1,6 +1,29 @@
+@keyframes shake {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+      transform: translateX(-5px);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+      transform: translateX(5px);
+    }
+  }
+
 body{
     min-width: 360px;
-    background-color: rgb(232, 232, 232)
+    background-color: rgb(232, 232, 232);
+    position: relative;
 }
 
 html, body, #root{
@@ -20,4 +43,8 @@ main{
 }
 footer{
     justify-self: end;
+}
+
+.shaking{
+  animation : shake 1s;
 }
