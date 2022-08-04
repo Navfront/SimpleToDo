@@ -4,8 +4,7 @@ import loadingIcon from '../todo-card/loading.gif'
 import { useAppSelector } from '../../../redux/redux-hooks'
 import { useEffect } from 'react'
 import { useAppDispatch } from './../../../redux/redux-hooks'
-import { getTodos, setTodos } from './../../../redux/slices/todosSlice'
-import LocalStorageApi from '../../../local-storage/local-storage-api'
+import { getTodos } from './../../../redux/slices/todosSlice'
 
 function TodoList () {
   const isLoading = useAppSelector((state) => state.app.isLoading)
@@ -18,13 +17,8 @@ function TodoList () {
 
     if (isAuth) {
       dispatch(getTodos(userName))
-    } else {
-      const localTodos = LocalStorageApi.getFromLocalStorage()
-      if (!localTodos) {
-        dispatch(setTodos([]))
-      } else { dispatch(setTodos(localTodos)) }
     }
-  }, [isAuth])
+  }, [])
 
   return isLoading
     ? (

@@ -2,7 +2,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import axios from 'axios'
 import Cookies from 'js-cookie'
-import LocalStorageApi from './../../local-storage/local-storage-api'
 
 export type Todo = {
     todoId: string;
@@ -25,7 +24,6 @@ export const getTodos = createAsyncThunk('todos/getTodos', async (username: stri
   if (token) {
     axios.get('http://localhost:5500/todos', { headers: { Authorization: `Bearer ${token}` } }).then(res => {
       dispatch(setTodos(res.data))
-      LocalStorageApi.setInLocalStorage(username, res.data)
     })
   }
 })
@@ -39,7 +37,6 @@ export const deleteTodo = createAsyncThunk('todos/deleteTodo', async (data: Thun
   const token = Cookies.get('jwt')
   axios.delete('http://localhost:5500/todos', { headers: { Authorization: `Bearer ${token}` }, data }).then(() => {
     dispatch(removeTodo({ todoId: data.todoId }))
-    LocalStorageApi.removeTodoFromLocalStorage(data.username, data.todoId)
   })
 })
 
@@ -56,7 +53,6 @@ export const createTodo = createAsyncThunk('todos/createTodo', async (data: Thun
   console.log('posttoken', token)
   axios.post<Promise<any>, CreateTodoResponse>('http://localhost:5500/todos', { data: data.todo }, { headers: { Authorization: `Bearer ${token}` } }).then(() => {
     dispatch(addTodo(data.todo))
-    LocalStorageApi.addTodoToLocalStorage(data.username, data.todo)
   })
 })
 
@@ -64,7 +60,6 @@ export const updateTodo = createAsyncThunk('todos/updateTodo', async (data: Thun
   const token = Cookies.get('jwt')
   axios.put('http://localhost:5500/todos', data.todo, { headers: { Authorization: `Bearer ${token}` } }).then(() => {
     dispatch(modifyTodo(data.todo))
-    LocalStorageApi.updateTodoInLocalStorage(data.username, data.todo)
   })
 })
 
