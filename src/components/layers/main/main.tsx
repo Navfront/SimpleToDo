@@ -1,6 +1,7 @@
 import TodoList from '../../ui/todo-list/todo-list'
 import { StyledContainer } from '../container/styled'
-import { StyledAddTodoBtn, StyledMain, StyledMainSection, StyledMainTitle } from './styled'
+import { StyledMain, StyledMainSection, StyledMainTitle } from './styled'
+import AddButton from './../../ui/add-button/add-button'
 
 function Main () {
   return (
@@ -10,7 +11,7 @@ function Main () {
           <StyledMainTitle>
             {'<'} SIMPLE TODO LIST {'>'}
           </StyledMainTitle>
-          <StyledAddTodoBtn type="button">Add TODO +</StyledAddTodoBtn>
+          <AddButton>Add TODO +</AddButton>
           <TodoList />
         </StyledMainSection>
       </StyledContainer>

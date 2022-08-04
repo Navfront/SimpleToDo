@@ -2,10 +2,11 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import axios from 'axios'
 import Cookies from 'js-cookie'
+import LocalStorageApi from './../../local-storage/local-storage-api'
 
 export type Todo = {
     todoId: string;
-    todoTitle: string;
+    title: string;
     isDone: boolean
 }
 
@@ -14,16 +15,57 @@ export interface TodosState{
 }
 
 const initialState: TodosState = {
-  todos: [{ todoId: '0', todoTitle: 'New ToDo', isDone: false }]
+  todos: [{ todoId: '0', title: 'New ToDo', isDone: false }]
 }
 
-export const getTodos = createAsyncThunk('todos/getTodos', async (_, { rejectWithValue, dispatch }) => {
+export const getTodos = createAsyncThunk('todos/getTodos', async (username: string, { rejectWithValue, dispatch }) => {
   const token = Cookies.get('jwt')
+  console.log('gettoken', token)
+
   if (token) {
     axios.get('http://localhost:5500/todos', { headers: { Authorization: `Bearer ${token}` } }).then(res => {
       dispatch(setTodos(res.data))
+      LocalStorageApi.setInLocalStorage(username, res.data)
     })
   }
+})
+
+type ThunkDataDelete = {
+  username: string,
+  todoId: string
+}
+
+export const deleteTodo = createAsyncThunk('todos/deleteTodo', async (data: ThunkDataDelete, { rejectWithValue, dispatch }) => {
+  const token = Cookies.get('jwt')
+  axios.delete('http://localhost:5500/todos', { headers: { Authorization: `Bearer ${token}` }, data }).then(() => {
+    dispatch(removeTodo({ todoId: data.todoId }))
+    LocalStorageApi.removeTodoFromLocalStorage(data.username, data.todoId)
+  })
+})
+
+type ThunkDataTodo = {
+  username: string,
+  todo: Todo;
+}
+
+type CreateTodoResponse = {
+  todo: Todo;
+}
+export const createTodo = createAsyncThunk('todos/createTodo', async (data: ThunkDataTodo, { rejectWithValue, dispatch }) => {
+  const token = Cookies.get('jwt')
+  console.log('posttoken', token)
+  axios.post<Promise<any>, CreateTodoResponse>('http://localhost:5500/todos', { data: data.todo }, { headers: { Authorization: `Bearer ${token}` } }).then(() => {
+    dispatch(addTodo(data.todo))
+    LocalStorageApi.addTodoToLocalStorage(data.username, data.todo)
+  })
+})
+
+export const updateTodo = createAsyncThunk('todos/updateTodo', async (data: ThunkDataTodo, { rejectWithValue, dispatch }) => {
+  const token = Cookies.get('jwt')
+  axios.put('http://localhost:5500/todos', data.todo, { headers: { Authorization: `Bearer ${token}` } }).then(() => {
+    dispatch(modifyTodo(data.todo))
+    LocalStorageApi.updateTodoInLocalStorage(data.username, data.todo)
+  })
 })
 
 export const todosSlice = createSlice({
@@ -38,11 +80,11 @@ export const todosSlice = createSlice({
     },
     modifyTodo: (state, action: PayloadAction<Todo>) => {
       const index = state.todos.findIndex(todo => todo.todoId === action.payload.todoId)
-      state.todos[index].todoTitle = action.payload.todoTitle
+      state.todos[index].title = action.payload.title
       state.todos[index].isDone = action.payload.isDone
     },
     setTodos: (state, action: PayloadAction<Todo[]>) => {
-      state.todos = [...action.payload]
+      state.todos = action.payload
     }
   }
 })

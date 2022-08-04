@@ -6,4 +6,5 @@ export const StyledTodoList = styled.ul`
     margin: 0;
     display: grid;
     gap: 10px;
+    grid-auto-flow: dense;
 `

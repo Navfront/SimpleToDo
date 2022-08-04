@@ -1,15 +1,10 @@
 type Todo = {
     todoId: string;
-    todoTitle: string;
+    title: string;
     isDone: boolean
 }
 
 export default class LocalStorageApi {
-  storageType: boolean
-  constructor (isAuth: boolean) {
-    this.storageType = isAuth
-  }
-
   static setInLocalStorage (usernamePrefix: string = 'default', value: any, key: string = 'todos') {
     localStorage.setItem(`${usernamePrefix}-${key}`, JSON.stringify(value))
   }
@@ -57,5 +52,9 @@ export default class LocalStorageApi {
     }
 
     return true
+  }
+
+  static clearLocalStorage () {
+    localStorage.clear()
   }
 }
