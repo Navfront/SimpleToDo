@@ -4,12 +4,14 @@ import authReducer from './slices/authSlice'
 import todosReducer from './slices/todosSlice'
 import noteReducer from './slices/noteSlice'
 import thunk from 'redux-thunk'
+import offlineReducer from './slices/offlineSlice'
 
 export const store = configureStore({
   reducer: {
     app: appReducer,
     auth: authReducer,
     todos: todosReducer,
+    offline: offlineReducer,
     note: noteReducer
 
   },
