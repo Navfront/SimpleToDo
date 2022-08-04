@@ -1,20 +1,13 @@
 import { StyledNotificatorWrapper } from './styled'
-import { useState } from 'react'
+
+import { useAppSelector } from '../../../redux/redux-hooks'
 
 function Notificator () {
-  const [message, setMessage] = useState({ text: '', color: 'lightred' })
-
-  // eslint-disable-next-line no-unused-vars
-  const handleMessageShow = (text: string, color: string) => {
-    setMessage({ text, color })
-    setTimeout(() => {
-      setMessage({ text: '', color: 'black' })
-    })
-  }
+  const note = useAppSelector(state => state.note)
 
   return <div>
-        <StyledNotificatorWrapper color='lightgreen'>
-            {message.text}
+        <StyledNotificatorWrapper color={note.color}>
+            {note.message}
         </StyledNotificatorWrapper>
     </div>
 }
