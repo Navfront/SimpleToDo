@@ -1,9 +1,12 @@
 import { takeEvery } from 'typed-redux-saga'
 import { sagaActionTypes } from './saga-actions'
 import { addTodoWorker } from './workers/add-todo'
+import { deleteTodoWorker } from './workers/delete-todo'
+
 import { getTodosWorker } from './workers/get-todos'
 import { loginWorker } from './workers/login'
 import { registerWorker } from './workers/register'
+import { toggleTodoWorker } from './workers/toggle-todo'
 
 export type UserAction = {
   type: string,
@@ -28,4 +31,12 @@ export function * watchGetTodos () {
 
 export function * watchAddTodo () {
   yield takeEvery(sagaActionTypes.add, addTodoWorker)
+}
+
+export function * watchDeleteTodo () {
+  yield takeEvery(sagaActionTypes.delete, deleteTodoWorker)
+}
+
+export function * watchToggleTodo () {
+  yield takeEvery(sagaActionTypes.toggleDone, toggleTodoWorker)
 }

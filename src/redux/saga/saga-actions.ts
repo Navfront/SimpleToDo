@@ -1,3 +1,4 @@
+import { Todo } from '../slices/todosSlice'
 
 export const sagaActionTypes = {
   login: 'SAGA_LOGIN',
@@ -25,6 +26,6 @@ const sagaDeleteTodo = (todoId: string) => ({ type: sagaActionTypes.delete, payl
 
 const sagaModify = (todoId: string, title: string) => ({ type: sagaActionTypes.modify, payload: { todoId, title } })
 
-const sagaToggleDone = (todoId: string) => ({ type: sagaActionTypes.toggleDone, payload: todoId })
+const sagaToggleDone = (todo: Todo) => ({ type: sagaActionTypes.toggleDone, payload: todo })
 
 export { sagaLogin, sagaRegister, sagaAddTodo, sagaDeleteTodo, sagaModify, sagaToggleDone, sagaGetTodos }
