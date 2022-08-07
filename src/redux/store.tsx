@@ -19,7 +19,8 @@ import {
 
 const persistConfig = {
   key: 'root',
-  storage
+  storage,
+  blacklist: ['app']
 }
 
 const rootReducer = combineReducers({
