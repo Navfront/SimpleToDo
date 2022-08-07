@@ -12,6 +12,7 @@ export const StyledAuthButton = styled.button`
     padding: 2px;
     background-color: transparent;
     padding: 0 5px;
+    cursor: pointer;
 `
 
 export const StyledUser = styled.div`

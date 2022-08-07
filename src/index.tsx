@@ -1,14 +1,23 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { Provider } from 'react-redux'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
+import { persistor, store } from './redux/store'
+import { PersistGate } from 'redux-persist/integration/react'
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-)
+const title = window.document.title
+window.addEventListener('offline', () => { window.document.title = title.concat(' [OFFLINE]') })
+window.addEventListener('online', () => { window.document.title = title.concat('') })
+
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <App />
+        </PersistGate>
+    </Provider>
   </React.StrictMode>
 )
 
