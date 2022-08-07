@@ -1,6 +1,6 @@
 import React, { FormEvent, RefObject } from 'react'
 
-import { StyledError, StyledForm, StyledTextWrapper } from './styled'
+import { StyledBtn, StyledError, StyledForm, StyledTextWrapper } from './styled'
 
 function TodoInput () {
   const WrapperRef = React.createRef<HTMLDivElement>()
@@ -38,8 +38,8 @@ function TodoInput () {
       </StyledTextWrapper >
 
       <p>
-        <button type="submit">ok</button>
-        <button type="button">cancel</button>
+        <StyledBtn type="submit">ok</StyledBtn>
+        <StyledBtn type="button">cancel</StyledBtn>
       </p>
     </StyledForm>
   )

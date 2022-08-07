@@ -34,3 +34,7 @@ width: 100%;
 export const StyledTextWrapper = styled.div`
   position: relative;
 `
+
+export const StyledBtn = styled.button`
+  padding: 7px 10px;
+`
