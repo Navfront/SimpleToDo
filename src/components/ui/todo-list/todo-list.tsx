@@ -27,17 +27,13 @@ function TodoList () {
     }
 
     if (isOnline) {
-      console.log('online render')
       return createTodos(onlineTodos)
     } else {
-      console.log('offline render')
       return createTodos(offlineTodos)
     }
   }
 
   useEffect(() => {
-    console.log('auth is ', isAuth)
-
     if (isAuth) {
       dispatch(getTodos(userName))
     }
