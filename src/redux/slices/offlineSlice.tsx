@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { Todo, TodosState } from './todosSlice'
 
 const initialState: TodosState = {
-  todos: [{ todoId: '0', title: 'New ToDo', isDone: false }]
+  todos: []
 }
 
 export const todosSlice = createSlice({
