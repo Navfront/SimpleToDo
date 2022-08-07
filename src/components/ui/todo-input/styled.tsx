@@ -14,5 +14,23 @@ export const StyledForm = styled.form`
     resize: none;
     width: 50vw;
     height: 30vh;
+    padding:  10px;
   }
+
+
+`
+export const StyledError = styled.p`
+position: absolute;
+left: 0;
+bottom: 5px;
+width: 100%;
+
+  font-size: 20;
+  font-weight: 700;
+  color: #fb3c3c;
+
+  margin: 0;
+`
+export const StyledTextWrapper = styled.div`
+  position: relative;
 `
