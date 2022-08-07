@@ -12,7 +12,7 @@ export function * registerWorker (data: UserAction) {
     const response: TokenResponse = yield call(registerUser, data.payload.login, data.payload.password)
     yield put(changeAuthState({ authLoading: false, userName: data.payload.login, isAuth: true, token: response.data.token }))
     yield put(toggleLoadingMode())
-    yield put(show({ message: 'Вы успешно зарегестрированы!', color: 'lightgreen' }))
+    yield put(show({ message: 'Registration is successful!', color: 'lightgreen' }))
   } catch (error: any) {
     yield put(changeAuthState({ authLoading: false, userName: '', isAuth: false, token: '' }))
     yield put(toggleLoadingMode())
