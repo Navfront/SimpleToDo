@@ -1,4 +1,4 @@
-import { takeEvery, all, call } from 'typed-redux-saga'
+import { takeEvery } from 'typed-redux-saga'
 
 import { sagaActionTypes } from './saga-actions'
 import { loginWorker } from './workers/login'
@@ -13,14 +13,10 @@ export type TokenResponse = { data: {token: string} }
 
 // watchers
 
-function * watchLogin () {
+export function * watchLogin () {
   yield takeEvery(sagaActionTypes.login, loginWorker)
 }
 
-function * watchRegister () {
+export function * watchRegister () {
   yield takeEvery(sagaActionTypes.register, registerWorker)
-}
-
-export default function * rootSaga () {
-  yield all([call(watchLogin), call(watchRegister)])
 }

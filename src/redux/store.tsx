@@ -17,7 +17,7 @@ import {
   PURGE,
   REGISTER
 } from 'redux-persist'
-import rootSaga from './saga/auth'
+import rootSaga from './saga/root-saga'
 
 const sagaMiddleware = createSagaMiddleware()
 

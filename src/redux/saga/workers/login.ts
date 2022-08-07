@@ -3,7 +3,7 @@ import { loginUser } from '../../../api'
 import { toggleLoadingMode } from '../../slices/appSlice'
 import { changeAuthState } from '../../slices/authSlice'
 import { show } from '../../slices/noteSlice'
-import { TokenResponse, UserAction } from '../auth'
+import { TokenResponse, UserAction } from '../watchers'
 
 export function * loginWorker (data: UserAction) {
   try {
