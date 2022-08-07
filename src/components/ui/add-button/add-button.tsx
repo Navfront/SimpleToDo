@@ -6,8 +6,6 @@ import { createTodo } from './../../../redux/slices/todosSlice'
 import { addOffline } from '../../../redux/slices/offlineSlice'
 import { v4 as uuidv4 } from 'uuid'
 
-const newTodo = { todoId: uuidv4(), title: 'New ToDo', isDone: false }
-
 function AddButton ({ children }:PropsWithChildren) {
   const { isAuth, userName } = useAppSelector(state => state.auth)
   const dispatch = useAppDispatch()
@@ -16,7 +14,7 @@ function AddButton ({ children }:PropsWithChildren) {
     if (isAuth) {
       dispatch(createTodo({ username: userName, todo: { todoId: '0', title: 'New ToDo', isDone: false } }))
     } else {
-      dispatch(addOffline(newTodo))
+      dispatch(addOffline({ todoId: uuidv4(), title: 'New ToDo', isDone: false }))
     }
   }
   return <StyledAddTodoBtn type="button" onClick={() => { onClickHandler() }}>{children}</StyledAddTodoBtn>

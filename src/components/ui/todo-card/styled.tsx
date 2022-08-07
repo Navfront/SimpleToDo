@@ -32,13 +32,4 @@ export const StyledButton = styled.button`
 export const StyledButtonsWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-`
-
-export const StyledFormModify = styled.form`
-    width: 100%;
-    input{
-        height: 90%;
-        width: 90%;
-    }
 `

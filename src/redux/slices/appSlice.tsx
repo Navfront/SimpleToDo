@@ -3,11 +3,13 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 export interface ApplicationState{
   isLoading: boolean
   isModalShow: boolean
+  targetTodoId: string
 }
 
 const initialState: ApplicationState = {
   isLoading: false,
-  isModalShow: false
+  isModalShow: false,
+  targetTodoId: ''
 }
 
 export const appSlice = createSlice({
@@ -17,8 +19,9 @@ export const appSlice = createSlice({
     toggleLoadingMode: (state) => {
       state.isLoading = !state.isLoading
     },
-    changeModalShow: (state, action: PayloadAction<boolean>) => {
-      state.isModalShow = action.payload
+    changeModalShow: (state, action: PayloadAction<ApplicationState>) => {
+      state.isModalShow = action.payload.isModalShow
+      state.targetTodoId = action.payload.targetTodoId
     }
 
   }
