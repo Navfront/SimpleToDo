@@ -17,14 +17,14 @@ import {
   PURGE,
   REGISTER
 } from 'redux-persist'
-import rootSaga from './sagas/auth'
+import rootSaga from './saga/auth'
 
 const sagaMiddleware = createSagaMiddleware()
 
 const persistConfig = {
   key: 'root',
   storage,
-  blacklist: ['app']
+  blacklist: ['app', 'auth', 'note']
 }
 
 const rootReducer = combineReducers({

@@ -5,6 +5,7 @@ import LoginForm, { LOGIN, REGISTER } from '../input-form/input-form'
 import { useAppSelector } from '../../../redux/redux-hooks'
 import { useAppDispatch } from './../../../redux/redux-hooks'
 import { changeAuthState } from '../../../redux/slices/authSlice'
+import { show } from '../../../redux/slices/noteSlice'
 
 function Auth () {
   const { isAuth, userName } = useAppSelector(state => state.auth)
@@ -19,6 +20,7 @@ function Auth () {
       token: '',
       authLoading: false
     }))
+    dispatch(show({ message: '', color: '' }))
   }
 
   return (

@@ -1,7 +1,7 @@
 
 import { StyledInput, StyledLoginBtn, StyledLoginForm } from './styled'
 import { useAppDispatch, useAppSelector } from './../../../redux/redux-hooks'
-import { sagaLogin, sagaRegister } from '../../../redux/sagas/saga-actions'
+import { sagaLogin, sagaRegister } from '../../../redux/saga/saga-actions'
 
 type LoginFormProps = {
   submitType: 'Register' | 'Login'
