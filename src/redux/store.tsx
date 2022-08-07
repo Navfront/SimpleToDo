@@ -6,6 +6,7 @@ import noteReducer from './slices/noteSlice'
 import thunk from 'redux-thunk'
 import offlineReducer from './slices/offlineSlice'
 import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
+import createSagaMiddleware from 'redux-saga'
 import {
   persistStore,
   persistReducer,
@@ -16,6 +17,9 @@ import {
   PURGE,
   REGISTER
 } from 'redux-persist'
+import rootSaga from './sagas/auth'
+
+const sagaMiddleware = createSagaMiddleware()
 
 const persistConfig = {
   key: 'root',
@@ -39,11 +43,13 @@ export const store = configureStore({
     serializableCheck: {
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
     }
-  }).concat(thunk),
+  }).concat(thunk).concat(sagaMiddleware),
   enhancers: []
 })
 
 export const persistor = persistStore(store)
+
+sagaMiddleware.run(rootSaga)
 
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch

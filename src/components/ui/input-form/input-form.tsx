@@ -1,7 +1,7 @@
 
 import { StyledInput, StyledLoginBtn, StyledLoginForm } from './styled'
 import { useAppDispatch, useAppSelector } from './../../../redux/redux-hooks'
-import { createUser, loginUser } from '../../../redux/slices/authSlice'
+import { sagaLogin, sagaRegister } from '../../../redux/sagas/saga-actions'
 
 type LoginFormProps = {
   submitType: 'Register' | 'Login'
@@ -17,14 +17,14 @@ function InputForm ({ submitType }: LoginFormProps) {
   const submitHandler = (evt: any) => {
     evt.preventDefault()
     const fields = new FormData(evt.target)
-    const login = fields.get('login')!
-    const password = fields.get('password')!
+    const login = fields.get('login')! as string
+    const password = fields.get('password')! as string
     switch (submitType) {
       case LOGIN:
-        dispatch(loginUser({ login, password }))
+        dispatch(sagaLogin(login, password))
         break
       case REGISTER:
-        dispatch(createUser({ login, password }))
+        dispatch(sagaRegister(login, password))
         break
     }
   }

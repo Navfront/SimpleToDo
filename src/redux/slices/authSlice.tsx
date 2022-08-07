@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit'
-import axios from 'axios'
-import Cookies from 'js-cookie'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+// import axios from 'axios'
+// import Cookies from 'js-cookie'
 
 export interface AuthState {
   authLoading: boolean
@@ -15,34 +15,34 @@ const initialState: AuthState = {
   userName: 'Unknown',
   token: ''
 }
-type CreateUserResponse = {status: number, data: { username: string, password: string } }
+// type CreateUserResponse = {status: number, data: { username: string, password: string } }
 
-export const loginUser = createAsyncThunk('auth/loginUser', async (userData: { login: any, password: any }, { rejectWithValue, dispatch }) => {
-  dispatch(switchLoadingState({ authLoading: true }))
+// export const loginUser = createAsyncThunk('auth/loginUser', async (userData: { login: any, password: any }, { rejectWithValue, dispatch }) => {
+//   dispatch(switchLoadingState({ authLoading: true }))
 
-  const response = await axios.post('http://localhost:5500/auth', {
-    username: userData.login,
-    password: userData.password
-  })
-  if (response.status === 200 || response.status === 201) {
-    dispatch(changeAuthState({ isAuth: true, userName: userData.login, token: response.data.access_token, authLoading: false }))
-    Cookies.set('jwt', response.data.access_token, { expires: 1 / 1440 })
-  }
+//   const response = await axios.post('http://localhost:5500/auth', {
+//     username: userData.login,
+//     password: userData.password
+//   })
+//   if (response.status === 200 || response.status === 201) {
+//     dispatch(changeAuthState({ isAuth: true, userName: userData.login, token: response.data.access_token, authLoading: false }))
+//     Cookies.set('jwt', response.data.access_token, { expires: 1 / 1440 })
+//   }
 
-  dispatch(switchLoadingState({ authLoading: false }))
-})
+//   dispatch(switchLoadingState({ authLoading: false }))
+// })
 
-export const createUser = createAsyncThunk('auth/createUser', async (userData: { login: any, password: any }, { rejectWithValue, dispatch }) => {
-  dispatch(switchLoadingState({ authLoading: true }))
-  const response = await axios.post<Promise<any>, CreateUserResponse>('http://localhost:5500/users/create', {
-    username: userData.login,
-    password: userData.password
-  })
+// export const createUser = createAsyncThunk('auth/createUser', async (userData: { login: any, password: any }, { rejectWithValue, dispatch }) => {
+//   dispatch(switchLoadingState({ authLoading: true }))
+//   const response = await axios.post<Promise<any>, CreateUserResponse>('http://localhost:5500/users/create', {
+//     username: userData.login,
+//     password: userData.password
+//   })
 
-  if (response.status === 200 || response.status === 201) {
-    dispatch(loginUser({ login: response.data.username, password: response.data.password }))
-  }
-})
+//   if (response.status === 200 || response.status === 201) {
+//     dispatch(loginUser({ login: response.data.username, password: response.data.password }))
+//   }
+// })
 
 export const authSlice = createSlice({
   name: 'auth',
