@@ -1,22 +1,28 @@
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { createSlice } from '@reduxjs/toolkit'
 export interface ApplicationState{
-    isLoading: boolean
+  isLoading: boolean
+  isModalShow: boolean
 }
 
 const initialState: ApplicationState = {
-  isLoading: false
+  isLoading: false,
+  isModalShow: false
 }
 
 export const appSlice = createSlice({
   name: 'app',
   initialState,
   reducers: {
-    changeLoadingMode: (state) => {
+    toggleLoadingMode: (state) => {
       state.isLoading = !state.isLoading
+    },
+    changeModalShow: (state, action: PayloadAction<boolean>) => {
+      state.isModalShow = action.payload
     }
+
   }
 })
 
-export const { changeLoadingMode } = appSlice.actions
+export const { toggleLoadingMode, changeModalShow } = appSlice.actions
 export default appSlice.reducer
