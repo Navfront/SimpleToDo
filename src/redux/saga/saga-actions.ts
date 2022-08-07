@@ -2,10 +2,11 @@
 export const sagaActionTypes = {
   login: 'SAGA_LOGIN',
   register: 'SAGA_REGISTER',
-  add: 'SAGA_ADD',
-  delete: 'SAGA_DELETE',
-  modify: 'SAGA_MODIFY',
-  toggleDone: 'SAGA_TOGGLE_DONE'
+  get: 'SAGA_GET_TODOS',
+  add: 'SAGA_ADD_TODO',
+  delete: 'SAGA_DELETE_TODO',
+  modify: 'SAGA_MODIFY_TODO',
+  toggleDone: 'SAGA_TOGGLE_TODO_DONE'
 }
 
 const sagaLogin = (login: string, password: string) => {
@@ -16,6 +17,8 @@ const sagaRegister = (login: string, password: string) => {
   return { type: sagaActionTypes.register, payload: { login, password } }
 }
 
+const sagaGetTodos = () => ({ type: sagaActionTypes.get })
+
 const sagaAddTodo = () => ({ type: sagaActionTypes.add })
 
 const sagaDeleteTodo = (todoId: string) => ({ type: sagaActionTypes.delete, payload: todoId })
@@ -24,4 +27,4 @@ const sagaModify = (todoId: string, title: string) => ({ type: sagaActionTypes.m
 
 const sagaToggleDone = (todoId: string) => ({ type: sagaActionTypes.toggleDone, payload: todoId })
 
-export { sagaLogin, sagaRegister, sagaAddTodo, sagaDeleteTodo, sagaModify, sagaToggleDone }
+export { sagaLogin, sagaRegister, sagaAddTodo, sagaDeleteTodo, sagaModify, sagaToggleDone, sagaGetTodos }

@@ -4,13 +4,14 @@ import loadingIcon from '../todo-card/loading.gif'
 import { useAppSelector } from '../../../redux/redux-hooks'
 import { useEffect } from 'react'
 import { useAppDispatch } from './../../../redux/redux-hooks'
-import { getTodos, Todo } from './../../../redux/slices/todosSlice'
+import { Todo } from './../../../redux/slices/todosSlice'
+import { sagaGetTodos } from '../../../redux/saga/saga-actions'
 
 function TodoList () {
   const isLoading = useAppSelector((state) => state.app.isLoading)
   const onlineTodos = useAppSelector((state) => state.todos.todos)
   const offlineTodos = useAppSelector(state => state.offline.todos)
-  const { isAuth, userName } = useAppSelector(state => state.auth)
+  const { isAuth } = useAppSelector(state => state.auth)
   const dispatch = useAppDispatch()
 
   const renderTodos = (isOnline: boolean) => {
@@ -35,7 +36,7 @@ function TodoList () {
 
   useEffect(() => {
     if (isAuth) {
-      dispatch(getTodos(userName))
+      dispatch(sagaGetTodos())
     }
   }, [])
 

@@ -6,6 +6,7 @@ import { useAppSelector } from '../../../redux/redux-hooks'
 import { useAppDispatch } from './../../../redux/redux-hooks'
 import { changeAuthState } from '../../../redux/slices/authSlice'
 import { show } from '../../../redux/slices/noteSlice'
+import { setTodos } from '../../../redux/slices/todosSlice'
 
 function Auth () {
   const { isAuth, userName } = useAppSelector(state => state.auth)
@@ -18,8 +19,10 @@ function Auth () {
       isAuth: false,
       userName: '',
       token: '',
-      authLoading: false
+      authLoading: false,
+      userId: ''
     }))
+    dispatch(setTodos([]))
     dispatch(show({ message: '', color: '' }))
   }
 
