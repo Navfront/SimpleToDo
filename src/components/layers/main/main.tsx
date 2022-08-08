@@ -5,6 +5,7 @@ import AddButton from './../../ui/add-button/add-button'
 import Notificator from './../../ui/notificator/notificator'
 import Modal from '../../ui/modal/modal'
 import TodoInput from './../../ui/todo-input/todo-input'
+import AuthStatus from '../../ui/auth-status/auth-status'
 
 function Main () {
   return (
@@ -15,7 +16,7 @@ function Main () {
           <StyledMainTitle>
             {'<'} SIMPLE TODO LIST {'>'}
           </StyledMainTitle>
-
+          <AuthStatus/>
           <AddButton>Add TODO +</AddButton>
           <Modal><TodoInput/></Modal>
           <TodoList />
