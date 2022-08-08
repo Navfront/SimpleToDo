@@ -1,13 +1,16 @@
 {
   "files": {
-    "main.js": "/SimpleToDo/static/js/main.946797ad.js",
+    "main.css": "/SimpleToDo/static/css/main.4ffc7c5c.css",
+    "main.js": "/SimpleToDo/static/js/main.2ec12694.js",
     "static/js/787.dcd468b1.chunk.js": "/SimpleToDo/static/js/787.dcd468b1.chunk.js",
     "static/media/loading.gif": "/SimpleToDo/static/media/loading.77c0fc7b22e756437574.gif",
     "index.html": "/SimpleToDo/index.html",
-    "main.946797ad.js.map": "/SimpleToDo/static/js/main.946797ad.js.map",
+    "main.4ffc7c5c.css.map": "/SimpleToDo/static/css/main.4ffc7c5c.css.map",
+    "main.2ec12694.js.map": "/SimpleToDo/static/js/main.2ec12694.js.map",
     "787.dcd468b1.chunk.js.map": "/SimpleToDo/static/js/787.dcd468b1.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.946797ad.js"
+    "static/css/main.4ffc7c5c.css",
+    "static/js/main.2ec12694.js"
   ]
 }
