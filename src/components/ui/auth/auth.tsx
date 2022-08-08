@@ -18,7 +18,6 @@ function Auth () {
     dispatch(changeAuthState({
       isAuth: false,
       userName: '',
-      token: '',
       authLoading: false,
       userId: ''
     }))
@@ -39,7 +38,6 @@ function Auth () {
                     : <StyledAuthButton type="button" onClick={() => {
                       setIsLoginFormShow(true)
                       setIsRegFormShow(false)
-                      console.log('click')
                     }}>Login</StyledAuthButton>}
 
                 </StyledAuthOut>}

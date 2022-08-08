@@ -4,7 +4,7 @@ export interface AuthState {
   authLoading: boolean
     isAuth: boolean
     userName: string
-  token: string
+
   userId: string
 }
 
@@ -12,7 +12,7 @@ const initialState: AuthState = {
   authLoading: false,
   isAuth: false,
   userName: 'Unknown',
-  token: '',
+
   userId: ''
 }
 
@@ -22,7 +22,7 @@ export const authSlice = createSlice({
   reducers: {
     changeAuthState: (state, action: PayloadAction<AuthState>) => {
       state.isAuth = action.payload.isAuth
-      state.token = action.payload.token
+
       state.userName = action.payload.userName
       state.userId = action.payload.userId
     },

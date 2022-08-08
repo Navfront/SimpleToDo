@@ -24,8 +24,6 @@ export async function getTodosFetch (user: string = 'admin', token: string = '')
 
 export async function addTodoFetch (userId: string, token: string) {
   const result = await axiosInst.post<string, any>('todos', { userId, title: 'New ToDo' }, { headers: { authorization: `Bearer ${token}` } })
-  console.log(result)
-
   return result
 }
 

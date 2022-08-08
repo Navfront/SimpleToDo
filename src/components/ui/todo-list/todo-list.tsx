@@ -36,7 +36,9 @@ function TodoList () {
 
   useEffect(() => {
     if (isAuth) {
-      dispatch(sagaGetTodos())
+      if (!onlineTodos || onlineTodos.length < 1) {
+        dispatch(sagaGetTodos())
+      }
     }
   }, [])
 
