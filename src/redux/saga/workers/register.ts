@@ -5,6 +5,7 @@ import { changeAuthState } from '../../slices/authSlice'
 import { show } from '../../slices/noteSlice'
 import { TokenResponse, UserAction } from '../watchers'
 import { ResponseUserData } from './login'
+import { ERROR_COLOR, SUCCESS_COLOR } from './../../../components/ui/notificator/notificator'
 
 export function * registerWorker (data: UserAction) {
   try {
@@ -14,10 +15,10 @@ export function * registerWorker (data: UserAction) {
     const userData: ResponseUserData = yield call(getUserDataFetch, data.payload.login, response.data.token)
     yield put(changeAuthState({ authLoading: false, userName: data.payload.login, isAuth: true, token: response.data.token, userId: userData.userId }))
     yield put(toggleLoadingMode())
-    yield put(show({ message: 'Registration is successful!', color: 'lightgreen' }))
+    yield put(show({ message: 'Registration is successful!', color: SUCCESS_COLOR }))
   } catch (error: any) {
     yield put(changeAuthState({ userId: '', authLoading: false, userName: '', isAuth: false, token: '' }))
     yield put(toggleLoadingMode())
-    yield put(show({ message: String(error.response.data.message || error.response.data), color: 'red' }))
+    yield put(show({ message: String(error.response.data.message || error.response.data), color: ERROR_COLOR }))
   }
 }

@@ -4,7 +4,9 @@ export const StyledTodoList = styled.ul`
     list-style: none;
     padding: 0;
     margin: 0;
-    display: grid;
+    display: flex;
+    flex-direction: column-reverse;
     gap: 10px;
-    grid-auto-flow: dense;
+    
+    
 `

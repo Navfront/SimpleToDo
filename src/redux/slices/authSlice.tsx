@@ -1,7 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-// import Cookies from 'js-cookie'
-
 export interface AuthState {
   authLoading: boolean
     isAuth: boolean
