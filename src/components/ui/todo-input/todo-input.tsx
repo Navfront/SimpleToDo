@@ -12,8 +12,8 @@ function TodoInput () {
   const targetTodoId = useAppSelector(state => state.app.targetTodoId)
   const isAuth = useAppSelector(state => state.auth.isAuth)
   const dispatch = useAppDispatch()
-  const WrapperRef = React.createRef<HTMLDivElement>()
-
+  const wrapperRef = React.createRef<HTMLDivElement>()
+  const submitRef = React.createRef<HTMLButtonElement>()
   const errorRef: RefObject<HTMLParagraphElement> = React.createRef()
 
   const setErrorText = (error: string) => {
@@ -33,10 +33,10 @@ function TodoInput () {
 
     if (text.length < 4) {
       setErrorText('Need more then 4 symbols!')
-      WrapperRef.current?.classList.add('shaking')
+      wrapperRef.current?.classList.add('shaking')
 
       setTimeout(() => {
-        WrapperRef.current?.classList.remove('shaking')
+        wrapperRef.current?.classList.remove('shaking')
       }, 1000)
     } else if (isAuth) {
       dispatch(sagaModify({ todoId: targetTodoId, title: text, isDone: false }))
@@ -67,14 +67,15 @@ function TodoInput () {
 
   return (
     <StyledForm onSubmit={onSubmitHandler}>
-      <StyledTextWrapper ref={WrapperRef}>
+      <StyledTextWrapper ref={wrapperRef}>
         <StyledError ref={errorRef}></StyledError>
         <TextArea name="text" placeholder="Enter text here"></TextArea>
       </StyledTextWrapper >
 
       <p>
-        <Button type="primary" shape='round'>Ok</Button>
+        <Button type="primary" shape='round' onClick={() => { submitRef.current?.click() }}>Ok</Button>
         <Button type="primary" shape='round' onClick={onCancelHandler}>Cancel</Button>
+        <button ref={submitRef} type='submit' hidden></button>
       </p>
     </StyledForm>
   )
