@@ -39,6 +39,6 @@
 
 <br>
 
-### Ссылка на gh-pages: https://navfront.github.io/BigTrip/
+### Ссылка на gh-pages: https://navfront.github.io/SimpleToDo/
 
 <br>
