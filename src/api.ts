@@ -2,7 +2,7 @@ import axios from 'axios'
 import { Todo } from './redux/slices/todosSlice'
 
 const axiosInst = axios.create({
-  baseURL: 'http://localhost:5500/'
+  baseURL: 'https://my-todoserver.herokuapp.com/'
 })
 
 type TokenResponse = { data: { token: string } }
