@@ -1,0 +1,50 @@
+@keyframes shake {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+      transform: translateX(-5px);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+      transform: translateX(5px);
+    }
+  }
+
+body{
+    min-width: 360px;
+    background-color: rgb(232, 232, 232);
+    position: relative;
+}
+
+html, body, #root{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#root{
+    display: flex;
+    flex-direction: column;
+}
+
+main{
+    flex-grow: 1;
+
+}
+footer{
+    justify-self: end;
+}
+
+.shaking{
+  animation : shake 1s;
+}

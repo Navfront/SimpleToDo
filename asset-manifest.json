@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.js": "/SimpleToDo/static/js/main.946797ad.js",
+    "static/js/787.dcd468b1.chunk.js": "/SimpleToDo/static/js/787.dcd468b1.chunk.js",
+    "static/media/loading.gif": "/SimpleToDo/static/media/loading.77c0fc7b22e756437574.gif",
+    "index.html": "/SimpleToDo/index.html",
+    "main.946797ad.js.map": "/SimpleToDo/static/js/main.946797ad.js.map",
+    "787.dcd468b1.chunk.js.map": "/SimpleToDo/static/js/787.dcd468b1.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.946797ad.js"
+  ]
+}
