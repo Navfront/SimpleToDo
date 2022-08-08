@@ -4,7 +4,9 @@ import { sagaModify } from '../../../redux/saga/saga-actions'
 import { changeModalShow } from '../../../redux/slices/appSlice'
 import { modifyOffline } from '../../../redux/slices/offlineSlice'
 
-import { StyledBtn, StyledError, StyledForm, StyledTextWrapper } from './styled'
+import { StyledError, StyledForm, StyledTextWrapper } from './styled'
+import { Button } from 'antd'
+import TextArea from 'antd/lib/input/TextArea'
 
 function TodoInput () {
   const targetTodoId = useAppSelector(state => state.app.targetTodoId)
@@ -67,12 +69,12 @@ function TodoInput () {
     <StyledForm onSubmit={onSubmitHandler}>
       <StyledTextWrapper ref={WrapperRef}>
         <StyledError ref={errorRef}></StyledError>
-        <textarea name="text" placeholder="Enter text here"></textarea>
+        <TextArea name="text" placeholder="Enter text here"></TextArea>
       </StyledTextWrapper >
 
       <p>
-        <StyledBtn type="submit">ok</StyledBtn>
-        <StyledBtn type="button" onClick={onCancelHandler}>cancel</StyledBtn>
+        <Button type="primary" shape='round'>Ok</Button>
+        <Button type="primary" shape='round' onClick={onCancelHandler}>Cancel</Button>
       </p>
     </StyledForm>
   )

@@ -1,7 +1,9 @@
 
-import { StyledInput, StyledLoginBtn, StyledLoginForm } from './styled'
+import { StyledLoginForm } from './styled'
 import { useAppDispatch, useAppSelector } from './../../../redux/redux-hooks'
 import { sagaLogin, sagaRegister } from '../../../redux/saga/saga-actions'
+import { Button, Input } from 'antd'
+import { EyeInvisibleOutlined, EyeTwoTone, LoginOutlined } from '@ant-design/icons'
 
 type LoginFormProps = {
   submitType: 'Register' | 'Login'
@@ -30,9 +32,9 @@ function InputForm ({ submitType }: LoginFormProps) {
   }
 
   return <StyledLoginForm onSubmit={submitHandler}>
-      <StyledInput name='login' type='text' placeholder='Login'/>
-    <StyledInput name='password' type='password' autoComplete='on' placeholder='Password' />
-    <StyledLoginBtn type="submit">{submitType} <img width='16' height='16' src='./loadingButton.gif' alt='#' style={{ display: isAuthLoading ? '' : 'none' }}/></StyledLoginBtn>
+      <Input name='login' type='text' placeholder='Login'/>
+    <Input.Password name='password' type='password' autoComplete='on' placeholder='Password' iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)} />
+    <Button type="primary">{submitType} <LoginOutlined /> <img width='16' height='16' src='./loadingButton.gif' alt='#' style={{ display: isAuthLoading ? '' : 'none' }}/></Button>
     </StyledLoginForm>
 }
 

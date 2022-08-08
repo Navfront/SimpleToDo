@@ -10,7 +10,9 @@ export const StyledContainer = styled.div`
     }
 
     @media (max-width: 768px) {
-        max-width: 360px;
+        max-width: auto;
+        padding: 0 15px;
+        min-width: 360px;
     }
 
 

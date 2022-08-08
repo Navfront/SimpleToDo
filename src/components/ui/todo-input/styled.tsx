@@ -33,6 +33,7 @@ width: 100%;
 `
 export const StyledTextWrapper = styled.div`
   position: relative;
+  margin-bottom: 10px;
 `
 
 export const StyledBtn = styled.button`

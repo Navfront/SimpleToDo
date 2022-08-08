@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://navfront.github.io/SimpleToDo/",
   "dependencies": {
+    "@ant-design/icons": "^4.7.0",
     "@reduxjs/toolkit": "1.8.3",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
@@ -12,6 +13,7 @@
     "@types/node": "^16.11.47",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
+    "antd": "^4.22.4",
     "axios": "0.27.2",
     "js-cookie": "3.0.1",
     "react": "^18.2.0",
