@@ -1,11 +1,12 @@
-/* eslint-disable no-unused-vars */
-import { StyledButtonsWrapper, StyledTodoCard, StyledButton, StyledTitle } from './styled'
-import { useState } from 'react'
+
+import { StyledButtonsWrapper, StyledTitle } from './styled'
 import { useAppDispatch, useAppSelector } from '../../../redux/redux-hooks'
 
 import { modifyOffline, removeOffline } from '../../../redux/slices/offlineSlice'
 import { changeModalShow } from '../../../redux/slices/appSlice'
-import { sagaDeleteTodo, sagaModify, sagaToggleDone } from '../../../redux/saga/saga-actions'
+import { sagaDeleteTodo, sagaToggleDone } from '../../../redux/saga/saga-actions'
+import { Button, Card } from 'antd'
+import { CheckOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons'
 
 type TodoCardProps = {
   todoId: string;
@@ -14,8 +15,7 @@ type TodoCardProps = {
 };
 
 function TodoCard ({ todoId, title, isDone = false }: TodoCardProps) {
-  const [isLoading] = useState(false)
-  const { isAuth, userName } = useAppSelector((state) => state.auth)
+  const { isAuth } = useAppSelector((state) => state.auth)
   const dispatch = useAppDispatch()
 
   const onDeleteHandler = () => {
@@ -43,14 +43,14 @@ function TodoCard ({ todoId, title, isDone = false }: TodoCardProps) {
   }
 
   return (
-    <StyledTodoCard>
+    <Card >
       <StyledTitle isDone={isDone}>{title}</StyledTitle>
       <StyledButtonsWrapper>
-        <StyledButton onClick={onDeleteHandler}>Delete</StyledButton>
-        <StyledButton onClick={onModifyHandler}>Modify</StyledButton>
-        <StyledButton onClick={onDoneHandler}>{isDone ? 'Not Done' : 'Done'}</StyledButton>
+        <Button shape="round" onClick={onDeleteHandler}><DeleteOutlined /></Button>
+        <Button shape="round" onClick={onModifyHandler}><EditOutlined /></Button>
+        <Button shape="round" onClick={onDoneHandler}><CheckOutlined /></Button>
       </StyledButtonsWrapper>
-    </StyledTodoCard>
+    </Card>
   )
 }
 

@@ -3,8 +3,8 @@ import styled from 'styled-components'
 export const StyledHeader = styled.header`
     padding: 10px;
     margin-bottom: 10px;
-    background-color: lightgrey;
-    
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.04), 0 0 1px rgba(0, 0, 0, 0.04);
+    background: linear-gradient(white,  #e5e5e5 );
 `
 
 export const StyledFlexWrapper = styled.div`

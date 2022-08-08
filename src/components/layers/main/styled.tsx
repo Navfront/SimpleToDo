@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const StyledMain = styled.main`
-    background-color: lightgrey;
+
     margin-bottom: 10px;
     padding: 10px;
 

@@ -15,7 +15,8 @@ export const StyledTodoCard = styled.div`
 export const StyledTitle = styled.h2<TitleProps>`
 margin-left: 10px;
     text-decoration: ${(props) => !props.isDone ? 'none' : 'line-through'};
-    color: #000000;
+    color: ${(props) => props.isDone ? '#3333335e' : 'black'};
+    
 `
 
 export const StyledButton = styled.button`
@@ -31,5 +32,8 @@ export const StyledButton = styled.button`
 `
 export const StyledButtonsWrapper = styled.div`
     display: flex;
-    flex-direction: column;
+    justify-content: end;
+    button {
+        margin: 0 3px;
+    }
 `
