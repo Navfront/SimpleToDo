@@ -1,4 +1,4 @@
-# Проект «SIMPLE TODO»
+# Проект «SIMPLE TODO» https://navfront.github.io/SimpleToDo/
 
 Небольшой фулстек проект, основанный на NESTJS и REACT.
 
