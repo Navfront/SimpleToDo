@@ -22,6 +22,6 @@ export function * toggleTodoWorker (action: ToggleAction) {
     } else { throw new Error('Authorize please!') }
   } catch (error: any) {
     yield put(changeAuthState({ userId: '', authLoading: false, userName: '', isAuth: false }))
-    yield put(show({ message: String(error.response.data.message || error.response.data || error.message), color: ERROR_COLOR }))
+    yield put(show({ message: String(error.response?.data?.message || error.response?.data || error.message), color: ERROR_COLOR }))
   }
 }

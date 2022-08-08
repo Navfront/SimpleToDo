@@ -31,6 +31,6 @@ export function * loginWorker (data: UserAction) {
   } catch (error: any) {
     yield put(changeAuthState({ userId: '', authLoading: false, userName: '', isAuth: false }))
     yield put(toggleLoadingMode())
-    yield put(show({ message: String(error.response.data.message || error.response.data), color: ERROR_COLOR }))
+    yield put(show({ message: String(error.response?.data?.message || error.response?.data || error.message), color: ERROR_COLOR }))
   }
 }
