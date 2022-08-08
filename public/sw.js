@@ -1,5 +1,5 @@
 const CACHE_PREFIX = 'my-simpletodo-'
-const CACHE_VER = 'v13'
+const CACHE_VER = 'v14'
 const CACHE_NAME = `${CACHE_PREFIX}-${CACHE_VER}`
 
 self.addEventListener('install', (evt) => {
