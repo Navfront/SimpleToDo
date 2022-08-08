@@ -28,18 +28,11 @@ export async function addTodoFetch (userId: string, token: string) {
 
   return result
 }
-// {
-//   "todoId": "4",
-//   "title": "new added todo!",
-//   "isDone": false
-// }
 
 export async function deleteTodoFetch (userId: string, todoId: string, token: string) {
   const result = await axiosInst.delete<string, any>('todos', { data: { userId, todoId }, headers: { authorization: `Bearer ${token}` } })
   return result.data
 }
-
-// true false
 
 export async function modifyTodoFetch (userId: string, todo: Todo, token: string) {
   const result = await axiosInst.put<string, any>('todos', { userId, todo }, { headers: { authorization: `Bearer ${token}` } })

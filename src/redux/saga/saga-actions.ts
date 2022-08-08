@@ -24,7 +24,7 @@ const sagaAddTodo = () => ({ type: sagaActionTypes.add })
 
 const sagaDeleteTodo = (todoId: string) => ({ type: sagaActionTypes.delete, payload: todoId })
 
-const sagaModify = (todoId: string, title: string) => ({ type: sagaActionTypes.modify, payload: { todoId, title } })
+const sagaModify = (todo: Todo) => ({ type: sagaActionTypes.modify, payload: todo })
 
 const sagaToggleDone = (todo: Todo) => ({ type: sagaActionTypes.toggleDone, payload: todo })
 

@@ -1,5 +1,6 @@
 import React, { FormEvent, RefObject, useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../redux/redux-hooks'
+import { sagaModify } from '../../../redux/saga/saga-actions'
 import { changeModalShow } from '../../../redux/slices/appSlice'
 import { modifyOffline } from '../../../redux/slices/offlineSlice'
 
@@ -36,7 +37,8 @@ function TodoInput () {
         WrapperRef.current?.classList.remove('shaking')
       }, 1000)
     } else if (isAuth) {
-      console.log('auth')
+      dispatch(sagaModify({ todoId: targetTodoId, title: text, isDone: false }))
+      closingModalDispatch()
     } else {
       dispatch(modifyOffline({ todoId: targetTodoId, title: text, isDone: false }))
       closingModalDispatch()
