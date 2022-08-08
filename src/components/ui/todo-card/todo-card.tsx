@@ -2,10 +2,10 @@
 import { StyledButtonsWrapper, StyledTodoCard, StyledButton, StyledTitle } from './styled'
 import { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../redux/redux-hooks'
-import { deleteTodo, updateTodo } from '../../../redux/slices/todosSlice'
 
 import { modifyOffline, removeOffline } from '../../../redux/slices/offlineSlice'
 import { changeModalShow } from '../../../redux/slices/appSlice'
+import { sagaDeleteTodo, sagaModify, sagaToggleDone } from '../../../redux/saga/saga-actions'
 
 type TodoCardProps = {
   todoId: string;
@@ -20,7 +20,7 @@ function TodoCard ({ todoId, title, isDone = false }: TodoCardProps) {
 
   const onDeleteHandler = () => {
     if (isAuth) {
-      dispatch(deleteTodo({ username: userName, todoId }))
+      dispatch(sagaDeleteTodo(todoId))
     } else {
       dispatch(removeOffline({ todoId }))
     }
@@ -28,7 +28,7 @@ function TodoCard ({ todoId, title, isDone = false }: TodoCardProps) {
 
   const onModifyHandler = () => {
     if (isAuth) {
-      dispatch(updateTodo({ username: userName, todo: { todoId, title, isDone } }))
+      dispatch(changeModalShow({ isLoading: false, isModalShow: true, targetTodoId: todoId }))
     } else {
       dispatch(changeModalShow({ isLoading: false, isModalShow: true, targetTodoId: todoId }))
     }
@@ -36,7 +36,7 @@ function TodoCard ({ todoId, title, isDone = false }: TodoCardProps) {
 
   const onDoneHandler = () => {
     if (isAuth) {
-      dispatch(updateTodo({ username: userName, todo: { todoId, title, isDone: !isDone } }))
+      dispatch(sagaToggleDone({ todoId, title, isDone: !isDone }))
     } else {
       dispatch(modifyOffline({ todoId, title, isDone: !isDone }))
     }
