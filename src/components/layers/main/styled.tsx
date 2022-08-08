@@ -17,3 +17,8 @@ export const StyledMainTitle = styled.h1`
     color: #333333;
     text-align: center;
 `
+
+export const StyledFlexContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+`

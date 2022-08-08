@@ -1,6 +1,6 @@
 import TodoList from '../../ui/todo-list/todo-list'
 import { StyledContainer } from '../container/styled'
-import { StyledMain, StyledMainSection, StyledMainTitle } from './styled'
+import { StyledFlexContainer, StyledMain, StyledMainSection, StyledMainTitle } from './styled'
 import AddButton from './../../ui/add-button/add-button'
 import Notificator from './../../ui/notificator/notificator'
 import Modal from '../../ui/modal/modal'
@@ -16,8 +16,8 @@ function Main () {
           <StyledMainTitle>
             {'<'} SIMPLE TODO LIST {'>'}
           </StyledMainTitle>
-          <AuthStatus/>
-          <AddButton>Add TODO +</AddButton>
+          <StyledFlexContainer><AuthStatus/><AddButton>Add TODO +</AddButton></StyledFlexContainer>
+
           <Modal><TodoInput/></Modal>
           <TodoList />
         </StyledMainSection>

@@ -4,9 +4,8 @@ import styled from 'styled-components'
 export const StyledStatusWrapper = styled.div`
     display: flex;
     align-items: center;
-    position: absolute;
-    top: 15px;
-    left: 10px;
+
+
 
     span{
         margin: 10px;
